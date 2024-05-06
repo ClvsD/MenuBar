@@ -1,0 +1,152 @@
+/* Google font import - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+:root {
+    /*========== Cores ==========*/
+    --body-color: #E4E9F7;
+    --sidebar-color: #FFF;
+    --primary-color: #695cfe;
+    --primary-color-ligth: #f6f5ff;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+
+    /*========== Transição ==========*/
+    --tran-02: all 0.2s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.4s ease;
+    --tran-06: all 0.5s ease;
+
+}
+
+body {
+    height: 100vh;
+    background: var(--body-color);
+}
+
+
+/*--------------- Sidebar ---------------*/
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    padding: 10px 14px;
+    background: var(--sidebar-color);
+}
+
+/*------------ Reusable CSS ---------*/
+.sidebar .text {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.sidebar .image {
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar header {
+    position: relative;
+}
+
+.sidebar li {
+    height: 50px;
+    margin-top: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar li .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    min-width: 60px;
+}
+
+.sidebar li .icon,
+.sidebar li .text {
+    color: var(--text-color);
+    transition: var(--tran-02);
+}
+
+.sidebar .image-text img {
+    width: 40px;
+}
+
+.sidebar header .image-text {
+    display: flex;
+    align-items: inherit;
+}
+
+header .image-text .header-text {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.header-text .name {
+    font-weight: 500;
+}
+
+.header-text .profession {
+    margin: -2px;
+}
+
+.sidebar header .toggle {
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    transform: translateY(-50%);
+    height: 25px;
+    width: 25px;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--sidebar-color);
+    font-size: 22px;
+}
+.sidebar .search-box{
+    background-color: var(--primary-color-ligth);
+}
+
+.search-box input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background: var(--primary-color-ligth);
+    border-radius: 6px;
+}
+
+.sidebar li a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: var(--tran-04);
+}
+
+.sidebar li a:hover{
+    background: var(--primary-color);
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text{
+    color: var(--sidebar-color);
+}
