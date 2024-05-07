@@ -19,17 +19,27 @@
 
     /*========== Transição ==========*/
     --tran-02: all 0.2s ease;
-    --tran-04: all 0.3s ease;
-    --tran-05: all 0.4s ease;
-    --tran-06: all 0.5s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
 
 }
 
 body {
     height: 100vh;
     background: var(--body-color);
+    transition: var(--tran-05);
 }
 
+body.dark{
+    /*========== Cores ==========*/
+    --body-color: #18191a;
+    --sidebar-color: #242526;
+    --primary-color: #3a3b3c;
+    --primary-color-ligth: #3a3b3c;
+    --toggle-color: #FFF;
+    --text-color: #CCC;
+}
 
 /*--------------- Sidebar ---------------*/
 .sidebar {
@@ -40,18 +50,31 @@ body {
     width: 250px;
     padding: 10px 14px;
     background: var(--sidebar-color);
+    transition: var(--tran-05);
+    z-index: 100;
 }
 
+.sidebar.close{
+    width: 88px;
+}
 /*------------ Reusable CSS ---------*/
 .sidebar .text {
     font-size: 16px;
     font-weight: 500;
     color: var(--text-color);
+    transition: var(--tran-04);
+    white-space: nowrap;
+    opacity: 1;
+}
+
+.sidebar.close .text{
+    opacity: 0;
 }
 
 .sidebar .image {
     min-width: 60px;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -108,7 +131,7 @@ header .image-text .header-text {
     position: absolute;
     top: 50%;
     right: -25px;
-    transform: translateY(-50%);
+    transform: translateY(-50%) rotate(180deg);
     height: 25px;
     width: 25px;
     background: var(--primary-color);
@@ -118,18 +141,38 @@ header .image-text .header-text {
     border-radius: 50%;
     color: var(--sidebar-color);
     font-size: 22px;
-}
-.sidebar .search-box{
-    background-color: var(--primary-color-ligth);
+    transition: var(--tran-03);
 }
 
-.search-box input{
+.sidebar.close header .toggle{
+    transform: translateY(-50%);
+}
+
+body.dark .sidebar header .toggle{
+    color: var(--text-color);
+}
+
+.sidebar .menu{
+    margin-top: 35px;
+}
+
+.sidebar .search-box {
+    background-color: var(--primary-color-ligth);
+    border-radius: 6px;
+    transition: var(--tran-05);
+}
+
+.search-box input {
     height: 100%;
     width: 100%;
     outline: none;
     border: none;
-    background: var(--primary-color-ligth);
     border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    background: var(--primary-color-ligth);
+    transition: var(--tran-05);
+    color: var(--text-color);
 }
 
 .sidebar li a {
@@ -139,14 +182,120 @@ header .image-text .header-text {
     align-items: center;
     text-decoration: none;
     border-radius: 6px;
-    transition: var(--tran-04);
+    transition: var(--tran-03);
 }
 
-.sidebar li a:hover{
+.sidebar li a:hover {
     background: var(--primary-color);
 }
 
 .sidebar li a:hover .icon,
-.sidebar li a:hover .text{
+.sidebar li a:hover .text {
     color: var(--sidebar-color);
+}
+
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text {
+    color: var(--text-color);
+}
+
+.sidebar .menu-bar {
+    height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.menu-bar .mode {
+    position: relative;
+    border-radius: 6px;
+    background-color: var(--primary-color-ligth);
+}
+
+.menu-bar .mode .moon-sun {
+    height: 50px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.menu-bar .mode i {
+    position: absolute;
+    transition: var(--tran-03);
+}
+
+.menu-bar .mode i.sun{
+    opacity: 0;
+}
+
+body.dark .menu-bar .mode i.sun{
+    opacity: 1;
+}
+
+body.dark .menu-bar .mode i.moon{
+    opacity: 0;
+}
+
+.menu-bar .mode .toggle-switch{
+    position: absolute;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-width: 60px;
+    cursor: pointer;
+    border-radius: 6px;
+    background: var(--primary-color-ligth);
+    transition: var(--tran-05);
+}
+
+.toggle-switch .switch{
+    position: relative;
+    height: 22px;
+    width: 44px;
+    border-radius: 25px;
+    background: var(--toggle-color);
+
+}
+
+.switch::before{
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left:5px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background: var(--sidebar-color);
+    transition: var(--tran-03);
+}
+
+
+body.dark .switch::before{
+    left: 24px;
+}
+
+.home{
+    position: relative;
+    height: 100vh;
+    left: 250px;
+    width: calc(100% - 88px);
+    background: var(--body-color);
+    transition: var(--tran-05);
+}
+
+.home .text{
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 8px 40px;
+}
+
+.sidebar.close ~ .home{
+    left: 88px;
+    width: calc(100% - 88px);
 }

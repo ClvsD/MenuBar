@@ -1,20 +1,21 @@
-const toggleBtn = document.querySelector('.toggle-btn');
-const sidebar = document.querySelector('.sidebar');
-const content = document.querySelector('.content');
+const body = document.querySelector("body"),
+    sidebar = body.querySelector(".sidebar"),
+    toggle = body.querySelector(".toggle"),
+    searchBtn = body.querySelector(".search-box"),
+    modeSwitch = body.querySelector(".toggle-switch"),
+    modeText = body.querySelector(".mode-text")
 
-toggleBtn.addEventListener('click', () => {
-    sidebar.classList.toggle('collapsed');
-    content.classList.toggle('expanded');
-});
+toggle.addEventListener("click", () => {
+    sidebar.classList.toggle("close")
+})
 
-window.addEventListener('resize', () => {
-    if (window.innerWidth <= 768) {
-        sidebar.classList.add('collapsed');
-        content.classList.add('expanded');
-    } else {
-        sidebar.classList.remove('collapsed');
-        content.classList.remove('expanded');
+modeSwitch.addEventListener("click", () => {
+    body.classList.toggle("dark")
+
+    if(body.classList.contains("dark")){
+        modeText.innerText ="Light Mode"
+    }else{
+        modeText.innerText ="Dark Mode"
     }
-});
+})
 
-window.dispatchEvent(new Event('resize'));
